@@ -1,0 +1,593 @@
+\documentclass[11pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetheme{Madrid}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
+\begin{document}
+	\author{Amaan}
+	\title{Studies in Quantum Field Theory }
+	\subtitle{On techniques for calculating Feynman Integrals}
+	%\logo{}
+	\institute{IIT Hyderabad}
+	%\date{}
+	%\subject{Department of Physics}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+\begin{frame}{Contents}
+	\begin{itemize}
+		\item Introduction 
+		\item \textcolor{gray}{Method of Differential Equations}
+		\item \textcolor{gray}{HQET Integral family at 2-loops}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Contents}
+	\begin{itemize}
+		\item \textcolor{gray}{Introduction} 
+		\item Method of Differential Equations
+		\item \textcolor{gray}{HQET Integral family at 2-loops}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item \textcolor{gray}{Introduction} 
+		\item \textcolor{gray}{Method of Differential Equations}
+		\item HQET Integral family at 2-loops
+	\end{itemize}
+\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=cyan}
+	\begin{frame}
+		\begin{center}
+			\textcolor{white}{INTRODUCTION}
+		\end{center}
+	\end{frame}
+}
+\begin{frame}
+	\textbf{Need for Feynman Integrals?}
+		\begin{figure}
+		\centering
+		\includegraphics[height= 2.5 cm]{/home/amaan/Physics/QFT/Project/scattering_FD.png}
+		\caption{ $e^+e^- \rightarrow \mu^+\mu^-\gamma$}
+		\label{fig:enter-label}
+	\end{figure}
+Observables $\rightarrow$ Scattering cross section $\rightarrow$
+\begin{align}
+	\sigma=\frac{1}{2s}\int|\mathcal{M}|^2 d\phi_n
+\end{align}
+Amplitude/Matrix Element($\mathcal{M}$)  $\rightarrow$ Feynman Integral
+\end{frame}
+\begin{frame}{Amplitude expressions for $e^+e^-\rightarrow\mu^+\mu^-$}
+	\begin{figure}
+		\centering
+		\includegraphics[height= 2 cm]{/home/amaan/Physics/QFT/Project/Vertex_correction.png}
+		\caption{Lowest order $e^--\gamma$ vertex, $(Court:Peskin)$}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[height= 2.5 cm]{/home/amaan/Physics/QFT/Project/One_loop_cal.png}
+	\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[height= 3 cm]{/home/amaan/Physics/QFT/Project/correction.png}
+\end{figure}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item These are hard to calculate!
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item These are hard to calculate!
+		\item We have a lot of these!
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item These are hard to calculate!
+		\item We have a lot of these
+		\item Way out? Differential equations
+	\end{itemize}
+\end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=cyan}
+	\begin{frame}
+		\begin{center}
+			\textcolor{white}{Method of Differential Equations}
+		\end{center}
+	\end{frame}
+}
+\begin{frame}
+	Feynman Integrals in most general form : 
+	\begin{align*}
+		I(\nu_1,\dots,\nu_N)=\int \prod_{i=1}^{L}d^Dk_i \frac{\mathcal{N}(k_i.k_j,p_i.p_j)}{(q_1^2-m^2+i\epsilon)^{\nu_1}\dots(q_N^2-m^2+i\epsilon)^{\nu_N}}
+	\end{align*}
+where $D : $ Spacetime dimension, $\nu_i \in \mathbb{Z}$ and,
+\begin{align*}
+	q_i=\sum_{j=1}^{L}\alpha_jk_j+\sum_{j=1}^{E}\beta_jp_j \;\; ;\alpha_i,\beta_i \in \{\pm1,0\}\\
+\end{align*}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+	\item Amplitude calculation might require the computation of 1000+ integrals.
+	\item Are these all independent? 
+    \end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item Amplitude calculation might require the computation of 1000+ integrals.
+		\item Are these all independent? NO
+		\item Can we find a basis of integrals? 
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item Amplitude calculation might require the computation of 1000+ integrals.
+		\item Are these all independent? 
+		\item Can we find a basis of integrals? $\implies$ Yes! Use IBP relations
+	\end{itemize}
+
+\end{frame}
+\begin{frame}
+	\textbf{Idea} : 
+	\begin{itemize}
+	\item $I(\nu_1,\dots,\nu_N)$ defines a point $(\nu_1,\dots,\nu_N)$ on $\mathbb{Z}$.
+	\item Find recursive relations on this lattice using differential operators called \textbf{IBP operators}.
+	\end{itemize}
+\end{frame}
+\begin{frame}{IBP Example : Massless 1-loop bubble}
+		\begin{figure}
+		\centering
+		\includegraphics[height= 2 cm]{/home/amaan/Physics/QFT/Project/bubble.png}
+	\end{figure}
+\begin{align*}
+	Bub(\nu_1,\nu_2)=\int \frac{d^Dk}{(k^2)^{\nu_1}(k+p)^{\nu_2}}
+\end{align*}
+\end{frame}
+\begin{frame}
+	IBP Operators : 
+	\begin{align*}
+		\frac{\partial}{\partial k^{\mu}}(N^{\mu}) \;\; ;N=k,p
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Applying IBP operators on this family,
+	\begin{align*}
+		Bub(v_1,v_2)=\frac{v_1+v_2-1-D}{p^2(v_2-1)}Bub(v_1,v_2-1)+\frac{1}{p^2}Bub(v_1-1,v_2) ;\;\;v_2\neq 1\\
+		Bub(v_1,v_2)=\frac{v_1+v_2-1-D}{p^2(v_1-1)}Bub(v_1-1,v_2)+\frac{1}{p^2}Bub(v_1,v_2-1) ;\;\;v_1\neq 1
+	\end{align*}
+\end{frame}
+\begin{frame}
+		\begin{figure}
+		\centering
+		\includegraphics[height= 5 cm]{/home/amaan/Physics/QFT/Project/lattice.png}
+		\label{fig:enter-label}
+	\end{figure}
+All integrals of this family can be reduced to $Bub(0,1)$ and $Bub(1,1)$
+\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=cyan}
+	\begin{frame}
+		\begin{center}
+			\textcolor{white}{1-loop Massless Box}
+		\end{center}
+	\end{frame}
+}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[height= 3 cm]{/home/amaan/Physics/QFT/Project/box.png}
+		\label{fig:enter-label}
+	\end{figure}
+\begin{align*}
+	Box(\nu_1,\nu_2,\nu_3,\nu_4)=\int \frac{d^Dk}{D_1^{\nu_1}D_2^{\nu_2}D_3^{\nu_3}D_4^{\nu_4}}
+\end{align*}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[height= 3 cm]{/home/amaan/Physics/QFT/Project/box.png}
+		\label{fig:enter-label}
+	\end{figure}
+	\begin{align*}
+		Box(\nu_1,\nu_2,\nu_3,\nu_4)=\int \frac{d^Dk}{D_1^{\nu_1}D_2^{\nu_2}D_3^{\nu_3}D_4^{\nu_4}}  \;\;\;\;\; : D=4-2\epsilon
+	\end{align*}
+Form of Propagators : 
+\begin{align*}
+	D_1=k^2,\;\;D_4=(k+p_1+p_2+p_3)^2\\
+	D_2=(k+p_1)^2,\;\;D_3=(k+p_1+p_2)^2
+\end{align*}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item 4-Momentum conservation
+	\begin{align*}
+		p_1+p_2+p_3+p_4=0\\
+	\end{align*}
+\end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item 4-Momentum conservation
+		\begin{align*}
+			p_1+p_2+p_3+p_4=0
+		\end{align*}
+	\item Mandelstam Variables
+	\begin{align*}
+		s_{ij}=(p_i+p_j)^2=2p_i.p_j\\
+		s=s_{12},\;\; t=s_{23},\;\; u=s_{13}\\
+		s+t+u=0
+	\end{align*}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	Goal : Sequence of change of variables
+	\begin{align*}
+		Box(p_1,p_2,p_3)=B(s_{12},s_{23},s_{13})=F(s,t)=(-s)^{2-\epsilon}I(x)
+	\end{align*}
+where,
+\begin{align*}
+	x=t/s
+\end{align*}
+\end{frame}
+\begin{frame}
+	Start with : 
+	\begin{align*}
+		D_{ij}=p_i^\mu\frac{\partial}{\partial p_j^\mu}
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Start with : 
+	\begin{align*}
+		D_{ij}=p_i^\mu\frac{\partial}{\partial p_j^\mu}
+	\end{align*}
+Apply $D_{33}$ on $Box(1,1,1,1)$ :
+\begin{align*}
+	D_{33}Box(1,1,1,1)=\frac{2(D-3)}{t^2}Box(0,1,0,1)-Box(1,1,1,1)
+\end{align*}
+\end{frame}
+\begin{frame}
+	Chain Rule Step 1 : 
+	\begin{align*}
+		s_{12}\frac{\partial}{\partial s_{12}}=\frac{1}{2}(D_{11}+D_{22}-D_{33})\\
+		s_{23}\frac{\partial}{\partial s_{23}}=\frac{1}{2}(-D_{11}+D_{22}+D_{33})\\
+		s_{13}\frac{\partial}{\partial s_{13}}=\frac{1}{2}(D_{11}-D_{22}+D_{33})
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Chain Rule Step 2 :
+	\begin{align*}
+		\frac{\partial}{\partial s}=\frac{\partial}{\partial s_{12}}-\frac{\partial}{\partial s_{13}}\\
+		\frac{\partial}{\partial t}=\frac{\partial}{\partial s_{23}}-\frac{\partial}{\partial s_{13}}
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Chain Rule Step 3 :
+	\begin{align*}
+		\frac{\partial}{\partial x}=-\sigma\frac{\partial}{\partial t}\\
+		\frac{\partial}{\partial \sigma}=-\frac{\partial}{\partial s}-x\frac{\partial}{\partial t}
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Current basis, $\vec{f}=\{f_1,f_2,f_3\}^T$ : 
+	\begin{align*}
+		f_1=G_{0,1,0,1}\\
+		f_2=G_{1,0,1,0}\\
+		f_3=G_{1,1,1,1}
+	\end{align*}
+
+\end{frame}
+\begin{frame}
+	Differential equation : 
+\begin{figure}
+	\centering
+	\includegraphics[height= 2 cm]{/home/amaan/Physics/QFT/Project/des.png}
+	\label{fig:enter-label}
+\end{figure}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[height= 1.8 cm]{/home/amaan/Physics/QFT/Project/asat.png}
+		\label{fig:enter-label}
+	\end{figure}
+\end{frame}
+\begin{frame}
+New Basis, $\vec{g}=\{g_1,g_2,g_3\}^T$: 
+\begin{align*}
+	g_1=c(-s)^\epsilon G_{0,1,0,2}\\
+	g_2=c(-s)^\epsilon G_{1,0,2,0}\\
+	g_3=c\epsilon(-s)^\epsilon stG_{1,1,1,1}
+\end{align*}
+\end{frame}
+\begin{frame}
+	Canonical Differential equation : 
+		\begin{figure}
+		\centering
+		\includegraphics[height= 3 cm]{/home/amaan/Physics/QFT/Project/ax.png}
+		\label{fig:enter-label}
+	\end{figure}
+\end{frame}
+{
+\setbeamercolor{background canvas}{bg=cyan}
+
+\begin{frame}
+	\begin{center}
+		\textcolor{white}{HQET Integral Family at 2 loops}
+	\end{center}
+\end{frame}
+}
+
+\begin{frame}{Cross Ladder Integral Family}
+	\begin{figure}
+		\centering
+		\includegraphics[height= 3 cm]{/home/amaan/Physics/QFT/Project/2-loop.png}
+		\caption{ 2-loop Web Diagram}
+		\label{fig:enter-label}
+	\end{figure}
+\begin{align*}
+	T^{(2)}[a_1,\dots,a_7]=\int \frac{d^Dk_1}{i\pi^{D/2}}\frac{d^Dk_2}{i\pi^{D/2}}\frac{D_7^{-a_7}}{D_1^{a_1}\dots D_6^{a_6}}
+\end{align*}
+
+\end{frame}
+\begin{frame}
+For soft gluons emitted by heavy quarks,
+\begin{align*}
+	D_1=-2k_1.v_1+\delta, \;\;\;\;D_2=-2(k_1+k_2).v_1+\delta,\\ D_3=-2(k_1+k_2).v_2+\delta,\;\;\;\;
+	D_4=-2k_2.v_2+\delta, \\
+	D_5 = -k_1^2,\;\;\;D_6=-k_2^2, \;\;\;D_7=k_1.k_2
+\end{align*}
+\end{frame}
+\begin{frame}
+	For admissible integrals with numerators,
+	\begin{align*}
+		D_8=D_3-D_4=-2k_1.v_2\\
+		D_9=D_2-D_1=-2k_2.v_1
+	\end{align*}
+\end{frame}
+\begin{frame}
+	For admissible integrals with numerators,
+	\begin{align*}
+		D_8=D_3-D_4=-2k_1.v_2\\
+		D_9=D_2-D_1=-2k_2.v_1
+	\end{align*}
+	In Auxillary Notation,
+	\begin{align*}
+		t^{(2)}[a_1,\dots,a_9]=\int \frac{d^Dk_1}{i\pi^{D/2}}\frac{d^Dk_2}{i\pi^{D/2}}\frac{D_7^{-a_7}D_8^{-a_8}D_9^{-a_9}}{D_1^{a_1}\dots D_6^{a_6}}
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Admissibile Integrals : 
+	\begin{itemize}
+		\item The integrand has the overall scaling dimension $-4L$ for the transformation $k_i\rightarrow \lambda k_i, i=1,2,\dots,L$.
+		\item No UV divergence in any subloop subdiagram.
+		\item  No infrared (IR) divergences. This forbids higher powers of massless propagators.
+	\end{itemize} 
+\end{frame}
+\begin{frame}
+	Admissible Integrals : Top sector with 6 propagators
+	\begin{align*}
+		A_1=T^{(2)}[1,1,1,1,1,1,0]\\
+		A_2=t^{(2)}[2,1,1,1,1,1,0,-1,0]\\
+		A_3=t^{(2)}[1,1,1,2,1,1,0,0,-1]
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Admissible Integrals : Sector with 5 propagators
+	\begin{align*}
+		B_1=T^{(2)}[1,2,1,0,1,1,0]\\
+		B_2=T^{(2)}[1,1,2,0,1,1,0]\\
+		B_3=t^{(2)}[2,1,2,0,1,1,0,-1,0]\\
+		B_4=t^{(2)}[2,2,1,0,1,1,0,-1,0]\\
+		B_5=T^{(2)}[1,2,0,1,1,1,0]\\
+		B_6=T^{(2)}[1,3,-1,1,1,1,0]\\
+		B_7=t^{(2)}[1,2,0,2,1,1,0,0,-1]\\
+		B_8=t^{(2)}[2,2,0,1,1,1,0,-1,0]
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Admissible Integrals : Sector with 4 propagators
+	\begin{align*}
+		C_1=T^{(2)}[1,0,3,0,1,1,0]\\
+		C_2=T^{(2)}[1,-1,4,0,1,1,0]\\
+		C_3=t^{(2)}[2,0,3,0,1,1,0,-1,0]\\
+		C_4=T^{(2)}[1,3,0,0,1,1,0]\\
+		C_5=T^{(2)}[1,4,-1,0,1,1,0]\\
+		C_6=t^{(2)}[2,3,0,0,1,1,0,-1,0]
+	\end{align*}
+\end{frame}
+\begin{frame}{Finding Master Integrals}
+	IBP Vectors : 
+	\begin{align}
+		\boldsymbol{P_1}=\partial_{1\mu}k_1^\mu\\
+		\boldsymbol{P_2}=\partial_{1\mu}k_{1\nu} v_1^{[\mu}v_2^{\nu]}\\
+		\boldsymbol{P_3}=(\partial_{1\mu}k_{1\nu}+\partial_{2\mu}k_{2\nu})v_1^{[\mu}v_2^{\nu]}
+	\end{align}
+\end{frame}
+\begin{frame}
+	IBP relations : Top Sector
+	\begin{align*}
+	\boldsymbol{P_2}A_1=0 \\	
+	\boldsymbol{P_3}A_1=0
+	\end{align*}
+\end{frame}
+\begin{frame}
+	IBP relations : Top Sector
+	\begin{align}
+		\boldsymbol{P_2}A_1=0 \implies A_2+B_5-2B_1-2(v_1.v_2)B_2=0\\	
+		\boldsymbol{P_3}A_1=0 \implies A_3-A_2=0
+	\end{align}
+\end{frame}
+\begin{frame}
+	IBP relations : 5 Propagator Sector
+	\begin{align*}
+		\boldsymbol{P_3}B_1=0 \\	
+		\boldsymbol{P_3}B_2=0 \\
+		\boldsymbol{P_1}B_5=0 \\
+		\boldsymbol{P_1}B_6=0 \\
+		\boldsymbol{P_1}B_8=0 \\
+		\boldsymbol{P_1}B_7=0 
+	\end{align*}
+\end{frame}
+\begin{frame}
+	IBP relations : 5 Propagator Sector
+	\begin{align}
+		\boldsymbol{P_3}B_1=0 \implies B_4-2(v_1.v_2)B_1-B_2+2C_4=0\\	
+		\boldsymbol{P_3}B_2=0 \implies B_3+B_1-2C_1=0\\
+		\boldsymbol{P_1}B_5=0 \implies B_5-2C_1=0\\
+		\boldsymbol{P_1}B_6=0 \implies 2B_6-C_4-3C_2=0\\
+		\boldsymbol{P_1}B_8=0 \implies B_8-2B_6+2C_4=0\\
+		\boldsymbol{P_1}B_7=0 \implies B_7-2C_3=0 
+	\end{align}
+\end{frame}
+\begin{frame}
+	IBP relations : 4 Propagator Sector (Important Direct\footnote{Not really direct} results)\\
+	\begin{align*}
+		\boldsymbol{P_2}C_1=0 \\	
+		\boldsymbol{P_3}C_1=0 \\
+		\boldsymbol{P_1}C_6=0 \\
+	\end{align*}
+\end{frame}
+\begin{frame}
+	IBP relations : 4 Propagator Sector (Important Direct results)\\
+	\begin{align*}
+		\boldsymbol{P_2}C_1=0 \implies C_3-C_4=0\\	
+		\boldsymbol{P_3}C_1=0 \implies C_3-3C_2+2(v_1.v_2)C_1=0\\
+		\boldsymbol{P_1}C_6=0 \implies 2(v_1.v_2)C_4-C_6+3C_5=0
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Combining all these results, admissible integrals can be decomposed as,
+	\begin{align*}
+		C_2=\frac{2(v_1.v_2)}{3}C_1+\frac{1}{3}C_4\\
+		C_3=C_4\\
+		C_5=-\frac{(v_1.v_2)}{3}C_4\\
+		C_6=(v_1.v_2)C_4
+	\end{align*}
+For top sector intrgrals,
+\begin{align*}
+	A_2=A_3=2B_1+2(v_1.v_2)B_2-2C_1
+\end{align*}
+\end{frame}
+\begin{frame}
+	For 5 propagator sector integrals : 
+	\begin{align*}
+		B_3=-B_1+2C_1\\
+		B_4=2(v_1.v_2)B_1+B_2-2C_4\\
+		B_5=2C_1\\
+		B_6=C_4+(v_1.v_2)C_1\\
+		B_7=2C_4\\
+		B_8=2(v_1.v_2)C_1
+	\end{align*}
+\end{frame}
+\begin{frame}
+	For 5 propagator sector integrals : 
+	\begin{align*}
+		B_3=-B_1+2C_1\\
+		B_4=2(v_1.v_2)B_1+B_2-2C_4\\
+		B_5=2C_1\\
+		B_6=C_4+(v_1.v_2)C_1\\
+		B_7=2C_4\\
+		B_8=2(v_1.v_2)C_1
+	\end{align*}
+$\implies$ {$A_1,B_1,B_2,C_1,C_4$} are the Master Integrals!
+\end{frame}
+\begin{frame} {Deriving Differential equations}
+	 We use the differential operator $d$ on $\vec{f}$,
+	\begin{align*}
+		\boldsymbol{d} \equiv \frac{x^2-1}{2}\frac{d}{dx}\equiv \frac{(v_1.v_2)v_1^\mu-v_1^2v_2^\mu}{\sqrt{v_1^2v_2^2}}\frac{\partial}{\partial v_1^\mu}
+	\end{align*}
+\end{frame}
+\begin{frame} {Deriving Differential equations}
+	We use the differential operator $d$ on $\vec{f}$,
+	\begin{align*}
+		\boldsymbol{d} \equiv \frac{x^2-1}{2}\frac{d}{dx}\equiv \frac{(v_1.v_2)v_1^\mu-v_1^2v_2^\mu}{\sqrt{v_1^2v_2^2}}\frac{\partial}{\partial v_1^\mu}
+	\end{align*}
+where,
+\begin{align*}
+	\vec{f}=\{A_1,B_1,B_2,C_1,C_4\}^T
+\end{align*}
+\end{frame}
+\begin{frame}
+	Applying on master integrals, 
+	\begin{align*}
+		\boldsymbol{d}A_1+2(v_1.v_2)A_1-A_2-B_5=0\\
+		\boldsymbol{d}B_1+3(v_1.v_2)B_1-B_4-2C_4=0\\
+		\boldsymbol{d}B_2+2(v_1.v_2)B_2-B_3-B_1=0\\
+		\boldsymbol{d}C_1+(v_1.v_2)C_1-C_4=0\\
+		\boldsymbol{d}C_4=0
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Simplifying,
+	\begin{align*}
+		\frac{d}{dx}\vec{f}=\boldsymbol{A}(x)\vec{f}\\
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Simplifying,
+	\begin{align*}
+		\frac{d}{dx}\vec{f}=\boldsymbol{A}(x)\vec{f}\\
+	\end{align*}
+where, 
+\begin{align*}
+	 \boldsymbol{A}=\frac{1+x^2}{1-x^2}\begin{pmatrix}
+		\frac{2}{x}& -\frac{4}{1+x^2}& -\frac{2}{x}& 0& 0&\\
+		0& \frac{1}{x}& -\frac{2}{1+x^2}& 0& 0& \\
+		0& 0& \frac{2}{x}& -\frac{4}{1+x^2}& 0&\\
+		0& 0& 0& \frac{1}{x}& -\frac{2}{1+x^2}&\\
+		0& 0& 0& 0& 0&
+	\end{pmatrix}
+\end{align*}
+\end{frame}
+\begin{frame}
+	To convert the DE to canonical form, choose : 
+	\begin{align*}
+		F_1=\frac{(x^2-1)^2}{2x^2}A_1\\
+		F_2=\frac{x^2-1}{x}(B_1+\frac{1+x^2}{2x}B_2)\\
+		F_3=\frac{2(x^2-1)}{x}C_1\\
+		F_4=C_4
+	\end{align*}
+\end{frame}
+\begin{frame}
+	Canonical form : 
+	\begin{align*}
+		\frac{d}{dx}\begin{pmatrix}
+			F_1& \\
+			F_2& \\
+			F_3& \\
+			F_4& \\
+		\end{pmatrix}=\begin{pmatrix}
+			0& \frac{2}{x}& 0& 0&\\
+			0& 0& \frac{1+x^2}{x(1-x)(1+x)}& 0& \\
+			0& 0& 0& \frac{4}{x}& \\
+			0& 0& 0& 0&
+		\end{pmatrix}
+		\begin{pmatrix}
+			F_1& \\
+			F_2& \\
+			F_3& \\
+			F_4& \\
+		\end{pmatrix}
+	\end{align*}
+This system can be solved iteratively!
+\end{frame}
+\begin{frame}{References}
+	\begin{itemize}
+		\item J Henn 4-D paper : \url{https://arxiv.org/abs/2211.13967}
+		\item J Henn's Review Paper : \url{https://arxiv.org/abs/1412.2296}
+		\item Claude Duhr's SageX Lectures : \url{https://youtu.be/f1QeB9vPLcg}
+		\item NPTEL QFT lectures : \url{https://youtube.com/playlist?list=PLyqSpQzTE6M8Zps-EKD70cm-gaPsEEEvP}
+		\item Introduction to QFT by Peskin and Schroeder
+	\end{itemize}
+\end{frame}
+\end{document}
